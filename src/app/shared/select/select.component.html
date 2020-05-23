@@ -1,0 +1,4 @@
+<label style="font-weight: bold;"> {{nome}} </label>
+ <select [(ngModel)]="valorInicial" (change)="retornarValor()" class="form-control" style="width: 40%;">
+  <option  *ngFor="let i of opcoes" [ngValue]="i.nome"> {{i.nome}} </option>
+</select>

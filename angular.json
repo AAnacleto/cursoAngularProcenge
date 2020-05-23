@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "HelloWolrd"
+    }
+  },
+  "defaultProject": "HelloWolrd",
+  "cli": {
+    "analytics": false
+  }
 }

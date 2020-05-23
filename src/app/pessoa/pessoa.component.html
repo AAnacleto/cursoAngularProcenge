@@ -1,0 +1,65 @@
+<button (click)="mostrarCadastroPessoa()">Cadastro de Pessoa</button>
+
+<app-layout *ngIf="mostrarcadastro">
+  <!-- <p>{{titulo}}</p> -->
+
+ <br>
+ <br>
+ <h3 [textContent]="titulo"></h3>
+ <table  class="table table-striped">
+    <thead >
+      <tr>
+        <td scope="col"><b>Código</b></td>
+        <td scope="col"><b>Nome</b></td>
+        <td scope="col"><b>Telefone</b></td>
+        <td scope="col"><b>Data Nascimento </b> </td>
+        <td scope="col"><b>Endereço </b></td>
+        <td scope="col"><b>Bairro </b> </td>
+        <td scope="col"><b>Cidade </b> </td>
+        <td scope="col"><b>Estado </b> </td>
+        <td scope="col"></td>
+        <td scope="col"></td>
+
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of listaPessoas">
+        <td ><span class="td">{{i.codigo}} </span> </td>
+        <td ><span class="td">{{i.nome}} </span></td>
+        <td ><span class="td">{{i.telefone}} </span></td>
+        <td><span class="td">{{i.datanasc}} </span></td>
+        <td><span class="td">{{i.endereco}} </span></td>
+        <td><span class="td">{{i.bairro}} </span></td>
+        <td><span class="td"> {{i.cidade}} </span></td>
+        <td><span class="td"> {{i.estado}} </span> </td>
+        <td><a class="icon" (click)="alterar(i)"><i class="fa fa-cog"></i></a></td>
+        <td><a class="icon" (click)="excluirSplice(i)"><i class="fa fa-trash"></i> </a></td>
+
+
+
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+
+  <app-inputtexto nome="Codigo" [valorInicial]="pessoa.codigo" (valorRetorno)="pessoa.codigo=$event"></app-inputtexto>
+  <app-inputtexto nome="Nome" [valorInicial]="pessoa.nome" (valorRetorno)="pessoa.nome=$event"></app-inputtexto>
+  <app-inputtexto nome="Data Nascimento" [valorInicial]="pessoa.datanasc" (valorRetorno)="pessoa.datanasc=$event" tipo="date"></app-inputtexto>
+  <app-inputtexto nome="Endereço" [valorInicial]="pessoa.endereco" (valorRetorno)="pessoa.endereco=$event"></app-inputtexto>
+  <app-inputtexto nome="Bairro" [valorInicial]="pessoa.bairro" (valorRetorno)="pessoa.bairro=$event"></app-inputtexto>
+  <app-inputtexto nome="Cidade" [valorInicial]="pessoa.cidade" (valorRetorno)="pessoa.cidade=$event"></app-inputtexto>
+
+  <app-select nome="Estado" [opcoes]="listaEstado" [valorInicial]="pessoa.estado" (valorRetorno)="pessoa.estado=$event"></app-select>
+
+
+
+    <br>
+    <br>
+    <app-button nome="cadastrar" (click)="salvar()"> </app-button>
+    <app-button *ngIf="alteracao"  nome="Salvar Alteração" (click)="salvarAlteracao()"></app-button>
+
+   
+</app-layout>
+

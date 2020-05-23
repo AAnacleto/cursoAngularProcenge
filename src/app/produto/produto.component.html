@@ -1,0 +1,57 @@
+<button (click)="mostrarCadastroproduto()" style="margin-left: 20px;">Cadastro de Produtos</button>
+<app-layout *ngIf="mostrarcadastroproduto" >
+  <h3 [textContent]="titulo"></h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>Código</td>
+          <td>Nome </td>
+          <td>Descrição</td>
+          <td>Lote</td>
+          <td>Valor Custo</td>
+          <td>valor Venda</td>
+          <td>Tipo</td>
+          <td>Data de Validade</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let i of ListaProduto" >
+          <td>{{i.codigo}}</td>
+          <td>{{i.nome}}</td>
+          <td>{{i.descricao}}</td>
+          <td>{{i.lote}}</td>
+          <td>{{i.valorcusto}}</td>
+          <td>{{i.valorvenda}}</td>
+          <td>{{i.tipo}}</td>
+          <td>{{i.datavalidade}}</td>
+          <td><a class="icon" (click)="alterar(i)"><i class="fa fa-cog"></i></a></td>
+           <td><a class="icon" (click)="excluirSplice(i)"><i class="fa fa-trash"></i> </a></td>
+      </tr>
+      </tbody>
+    </table>
+<br>
+<br>
+
+<app-inputtexto nome="Codigo" [valorInicial]="produto.codigo" (valorRetorno)="produto.codigo=$event"></app-inputtexto>
+<app-inputtexto nome="Nome" [valorInicial]="produto.nome" (valorRetorno)="produto.nome=$event"></app-inputtexto>
+<app-inputtexto nome="Descrição" [valorInicial]="produto.descricao" (valorRetorno)="produto.descricao=$event"></app-inputtexto>
+<app-inputtexto nome="Lote" [valorInicial]="produto.lote" (valorRetorno)="produto.lote=$event"></app-inputtexto>
+<app-inputtexto nome="Valor Custo" [valorInicial]="produto.valorcusto" (valorRetorno)="produto.valorcusto=$event"></app-inputtexto>
+<app-inputtexto nome="Valor Venda" [valorInicial]="produto.valorvenda" (valorRetorno)="produto.valorvenda=$event"></app-inputtexto>
+<!--select-->
+<app-inputtexto nome="Tipo"></app-inputtexto>
+
+<app-select nome="Tipo" [opcoes]="TipoProdutos" [valorInicial]="produto.tipo" (valorRetorno)="produto.tipo=$event"></app-select>
+
+
+<app-inputtexto nome="Data de validade" tipo="date" [valorInicial]="produto.datavalidade" (valorRetorno)="produto.datavalidade=$event"></app-inputtexto>
+
+<br>
+<br>
+
+<app-button nome="cadastrar" (click)="salvar()"> </app-button>
+<app-button *ngIf="alteracao"  nome="Salvar Alteração" (click)="salvarAlteracao()"></app-button>
+
+
+</app-layout>
